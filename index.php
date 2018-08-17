@@ -44,7 +44,7 @@
           <th>City</th>
           <th>State</th>
       </tr>
-      <?php foreach($select as $data){ 
+      <?php print_r($select); foreach($select as $data){ 
       echo '<tr>
             <td>'.$data['customer_name'].'</td>
             <td>'.$data['address'].'</td>
