@@ -6,12 +6,25 @@
     } else {
         echo 'there has been an error connecting';
     } 
-    $create_table = pg_query($conn, "CREATE TABLE IF NOT EXISTS table1 (
+    /*$create_table = pg_query($conn, "CREATE TABLE IF NOT EXISTS table1 (
                                         id SERIAL PRIMARY KEY,
                                         column1 CHARACTER VARYING(255) NOT NULL UNIQUE
+                                    );");*/
+
+    $create_table = pg_query($conn, "CREATE TABLE IF NOT EXISTS customers (
+                                        id SERIAL PRIMARY KEY,
+                                        customer_name CHARACTER VARYING(255) NOT NULL,
+                                        address CHARACTER VARYING(255) NOT NULL,
+                                        city CHARACTER VARYING(255) NOT NULL,
+                                        state CHARACTER VARYING(255) NOT NULL,
                                     );");
-    $insert = pg_query($conn, "INSERT INTO table1(column1) VALUES('My first deployment!')");
-    $select =  pg_query($conn, "Select * from table1");
+
+    //$insert = pg_query($conn, "INSERT INTO table1(column1) VALUES('My first deployment!')");
+    $insert = pg_query($conn, "INSERT INTO customers(customer_name, address, city, state) VALUES('Sahil sharma', 'Mohali', 'Chandigarh', 'punjab')");
+    $insert = pg_query($conn, "INSERT INTO customers(customer_name, address, city, state) VALUES('Rahul sharma', 'Mohali', 'Mohali', 'punjab')");
+    $insert = pg_query($conn, "INSERT INTO customers(customer_name, address, city, state) VALUES('Rahul rai', 'Mohali', 'Gurdaspur', 'punjab')");
+    $insert = pg_query($conn, "INSERT INTO customers(customer_name, address, city, state) VALUES('chandan kumar', 'Mohali', 'Kurali', 'punjab')");
+    $select =  pg_query($conn, "Select * from customers");
 ?>
 
 
@@ -23,12 +36,25 @@
 </head>
 
 <body style="color:red;">
-  <?php  print_r($select);
-    
-    echo "<br/>";
-    print_r(var_dump(pg_fetch_all($select)));
-    echo 'exit!';
-    ?>
+
+    <table>
+      <tr>
+          <th>Customer name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+      </tr>
+      <?php foreach($select as $data){ 
+      echo '<tr>
+            <td>'.$data['customer_name'].'</td>
+            <td>'.$data['address'].'</td>
+            <td>'.$data['city'].'</td>
+            <td>'.$data['state'].'</td>
+          </tr>';
+        } ?>
+
+    </table>
+
 </body>
 
 </html>
