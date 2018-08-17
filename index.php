@@ -11,12 +11,12 @@
                                         column1 CHARACTER VARYING(255) NOT NULL UNIQUE
                                     );");*/
 
-    $create_table = pg_query($conn, "CREATE TABLE IF NOT EXISTS customers (
+    $create_table = pg_query($conn, "CREATE TABLE customers (
                                         id SERIAL PRIMARY KEY,
                                         customer_name CHARACTER VARYING(255) NOT NULL,
                                         address CHARACTER VARYING(255) NOT NULL,
                                         city CHARACTER VARYING(255) NOT NULL,
-                                        state CHARACTER VARYING(255) NOT NULL,
+                                        state CHARACTER VARYING(255) NOT NULL
                                     );");
 
     //$insert = pg_query($conn, "INSERT INTO table1(column1) VALUES('My first deployment!')");
@@ -36,7 +36,6 @@
 </head>
 
 <body style="color:red;">
-
     <table>
       <tr>
           <th>Customer name</th>
@@ -44,7 +43,7 @@
           <th>City</th>
           <th>State</th>
       </tr>
-      <?php print_r($select); foreach($select as $data){ 
+      <?php foreach(pg_fetch_all($select) as $data){ 
       echo '<tr>
             <td>'.$data['customer_name'].'</td>
             <td>'.$data['address'].'</td>
