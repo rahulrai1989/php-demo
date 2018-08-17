@@ -20,10 +20,10 @@
                                     );");
 
     //$insert = pg_query($conn, "INSERT INTO table1(column1) VALUES('My first deployment!')");
-    $insert = pg_query($conn, "INSERT INTO customers(customer_name, address, city, state) VALUES('Sahil sharma', 'Mohali', 'Chandigarh', 'punjab')");
+    /*$insert = pg_query($conn, "INSERT INTO customers(customer_name, address, city, state) VALUES('Sahil sharma', 'Mohali', 'Chandigarh', 'punjab')");
     $insert = pg_query($conn, "INSERT INTO customers(customer_name, address, city, state) VALUES('Rahul sharma', 'Mohali', 'Mohali', 'punjab')");
     $insert = pg_query($conn, "INSERT INTO customers(customer_name, address, city, state) VALUES('Rahul rai', 'Mohali', 'Gurdaspur', 'punjab')");
-    $insert = pg_query($conn, "INSERT INTO customers(customer_name, address, city, state) VALUES('chandan kumar', 'Mohali', 'Kurali', 'punjab')");
+    $insert = pg_query($conn, "INSERT INTO customers(customer_name, address, city, state) VALUES('chandan kumar', 'Mohali', 'Kurali', 'punjab')");*/
     $select =  pg_query($conn, "Select * from customers");
 ?>
 
