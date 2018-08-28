@@ -1,7 +1,10 @@
 <?php
 require('vendor/autoload.php');
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
+if(getenv('DOT_ENV'))
+{
+	$dotenv = new Dotenv\Dotenv(__DIR__);
+	$dotenv->load();
+}
 
 use \Rollbar\Rollbar;
 use \Rollbar\Payload\Level;
