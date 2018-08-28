@@ -4,7 +4,7 @@ include_once('header.php');
     $conn = pg_connect("host=".getenv('HOST')." dbname=".getenv('DBNAME')." user=".getenv('USER')." password=".getenv('PASSWORD')." port=5432");
     if($conn) {
        echo 'connected';
-    } else { die('asd');
+    } else {
         Rollbar::log(Level::info(), 'DB not connected');
     } 
 
