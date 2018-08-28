@@ -4,7 +4,7 @@ include_once('header.php');
 use \Rollbar\Rollbar;
 use \Rollbar\Payload\Level;
 
-    $conn = pg_connect("host=".getenv('HOST')." dbname=".getenv('DBNAME')." user=".getenv('USER')." password=".getenv('PASSWORD')." port=5432");
+    $conn = pg_connect("host=".getenv('HOST_NAME')." dbname=".getenv('DB_NAME')." user=".getenv('DB_USER')." password=".getenv('DB_PASSWORD')." port=5432");
     if($conn) {
        echo 'connected';
     } else {
