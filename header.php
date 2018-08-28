@@ -1,13 +1,15 @@
 <?php
 require('vendor/autoload.php');
-if(getenv('DOT_ENV'))
-{
-	$dotenv = new Dotenv\Dotenv(__DIR__);
-	$dotenv->load();
-}
 
+use Dotenv\Dotenv;
 use \Rollbar\Rollbar;
 use \Rollbar\Payload\Level;
+
+if (getenv('ENVIROMENT') !== 'staging' && getenv('ENVIROMENT') !== 'production') {
+    //load env variables
+    $dotenv = new Dotenv(__DIR__);
+    $dotenv->load();
+}
 
 Rollbar::init(
     array(
